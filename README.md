@@ -107,7 +107,7 @@ public class HomePage extends WebPage {
 }
 ```
 
-Your jade template - BooksPabel.jade (in HomePage package or in other location):
+Your jade template - BooksPanel.jade (in HomePage package or in other location):
 
 ```
 div(wicket:id="authorPanel")
