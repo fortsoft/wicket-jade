@@ -1,6 +1,6 @@
 Description
 =====================
-Wicket-Jade integration.
+Wicket-Jade integration. The current implementation is based on [jade4j](https://github.com/neuland/jade4j).
 
 Current build status: [![Build Status](https://buildhive.cloudbees.com/job/decebals/job/wicket-jade/badge/icon)](https://buildhive.cloudbees.com/job/decebals/job/wicket-jade/)
 
