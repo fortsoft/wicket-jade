@@ -35,61 +35,61 @@ It's very simple to add a jade panel in your wicket application.
 
 In your wicket page:
 
-    ```java
-    public class HomePage extends WebPage {
+```java
+public class HomePage extends WebPage {
 
-	    public HomePage() {
-		    super();		
-	    }
+    public HomePage() {
+	    super();		
+    }
 
-	    @Override
-	    protected void onInitialize() {
-		    super.onInitialize();
-		
-		    List<Book> books = new ArrayList<Book>();
-		    books.add(new Book("The Hitchhiker's Guide to the Galaxy", 5.70, true));
-		    books.add(new Book("Life, the Universe and Everything", 5.60, false));
-		    books.add(new Book("The Restaurant at the End of the Universe", 5.40, true));
-		
-		    Map<String, Object> jadeModel = new HashMap<String, Object>();
-		    jadeModel.put("books", books);
-		
-		    add(new JadePanel("jadePanel", jadeModel) {
+    @Override
+    protected void onInitialize() {
+	    super.onInitialize();
+	
+	    List<Book> books = new ArrayList<Book>();
+	    books.add(new Book("The Hitchhiker's Guide to the Galaxy", 5.70, true));
+	    books.add(new Book("Life, the Universe and Everything", 5.60, false));
+	    books.add(new Book("The Restaurant at the End of the Universe", 5.40, true));
+	
+	    Map<String, Object> jadeModel = new HashMap<String, Object>();
+	    jadeModel.put("books", books);
+	
+	    add(new JadePanel("jadePanel", jadeModel) {
 
-			    @Override
-			    public JadeTemplate getTemplate() {
-				    try {
-					    return HomePage.this.getTemplate("books.jade");
-				    } catch (IOException e) {
-					    onException(e);
-				    }
-				
-				    return null;
+		    @Override
+		    public JadeTemplate getTemplate() {
+			    try {
+				    return HomePage.this.getTemplate("books.jade");
+			    } catch (IOException e) {
+				    onException(e);
 			    }
 			
-		    });
-	    }  
+			    return null;
+		    }
+		
+	    });
+    }  
 
-    }
-    ```
+}
+```
 
 Your jade template - books.jade (in HomePage package or in other location):
 
-    ```
-    ol#books
-      for book in books
-        if book.available
-          li #{book.name} for #{book.price} €    
-    ```
+```
+ol#books
+  for book in books
+    if book.available
+      li #{book.name} for #{book.price} €    
+```
     
 Running the above code will result in the following html output for jade file
 
-    ```html
-    <ol id="books">
-      <li>The Hitchhiker's Guide to the Galaxy for 5,70 €</li>
-      <li>The Restaurant at the End of the Universe for 5,40 €</li>
-    </ol>
-    ```
+```html
+<ol id="books">
+    <li>The Hitchhiker's Guide to the Galaxy for 5,70 €</li>
+    <li>The Restaurant at the End of the Universe for 5,40 €</li>
+</ol>
+```
 
 Demo
 -------------------
