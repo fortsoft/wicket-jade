@@ -33,6 +33,25 @@ How to use
 -------------------
 It's very simple to add a jade panel in your wicket application.
 
+Define entity (business) object - a simple POJO:
+
+```java
+public class Book implements Serializable {
+	
+	private String name;
+	private double price;
+	private boolean available;
+	
+	public Book(String name, double price, boolean available) {
+		this.name = name;
+		this.price = price;
+		this.available = available;
+	}
+
+    // getters and setters
+}
+```
+
 In your wicket page:
 
 ```java
