@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+#wicketDebugLink {
+	font-size: 10px;
+}
+
+div.wicket-modal div.w_caption {
+    height: 1.7em !important;   
+}
+
+h3.w_captionText {
+    font-size: 13px !important;
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+    <parent>
+        <groupId>ro.fortsoft.wicket.jade</groupId>
+        <artifactId>wicket-jade-parent</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>wicket-jade</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+	<name>Wicket Jade</name>
+	<description>Jade and Apache Wicket integration</description>
+
+	<dependencies>
+		<!-- Jade4J -->
+		<dependency>
+		  <groupId>de.neuland</groupId>
+		  <artifactId>jade4j</artifactId>
+		  <version>0.3.12</version>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>jade4j-releases</id>
+			<url>https://raw.github.com/neuland/jade4j/master/releases</url>
+		</repository>
+	</repositories>
+	
+</project>
