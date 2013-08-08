@@ -31,9 +31,10 @@ public class WicketApplication extends WebApplication {
 		// markup settings
 		getMarkupSettings().setStripWicketTags(true);
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
+//		getMarkupSettings().setMarkupFactory(new JadeMarkupFactory());
 
 		// exception settings
-		getResourceSettings().setThrowExceptionOnMissingResource(false);
+		getResourceSettings().setThrowExceptionOnMissingResource(false);		
 	}
 
 	@Override

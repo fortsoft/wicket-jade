@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.util.collections.MicroMap;
 
 import ro.fortsoft.wicket.jade.JadePanel;
@@ -49,6 +50,8 @@ public class HomePage extends WebPage {
 		booksPanel.setRenderBodyOnly(true);
 		add(booksPanel);
 		
+		booksPanel.add(new Label("wicketLabel", "Pure wicket label !!!"));
+		
 		Author author = new Author("Douglas", "Adams", "England");
 		
 		Map<String, Object> authorModel = new MicroMap<String, Object>();
@@ -56,7 +59,7 @@ public class HomePage extends WebPage {
 		AuthorPanel authorPanel = new AuthorPanel("authorPanel", authorModel);
 		authorPanel.setRenderBodyOnly(true);
 		
-		booksPanel.add(authorPanel);
+		booksPanel.add(authorPanel);		
 	}
 		
 }

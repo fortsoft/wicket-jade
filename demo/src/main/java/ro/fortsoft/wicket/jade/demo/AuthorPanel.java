@@ -14,12 +14,12 @@ package ro.fortsoft.wicket.jade.demo;
 
 import java.util.Map;
 
-import ro.fortsoft.wicket.jade.DefaultJadePanel;
+import ro.fortsoft.wicket.jade.JadePanel;
 
 /**
  * @author Decebal Suiu
  */
-public class AuthorPanel extends DefaultJadePanel {
+public class AuthorPanel extends JadePanel {
 
 	private static final long serialVersionUID = 1L;
 
