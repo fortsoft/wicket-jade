@@ -4,12 +4,12 @@
     <parent>
         <groupId>ro.fortsoft.wicket.jade</groupId>
         <artifactId>wicket-jade-parent</artifactId>
-        <version>0.1-SNAPSHOT</version>
+        <version>0.1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>wicket-jade</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <packaging>jar</packaging>
 	<name>Wicket Jade</name>
 	<description>Jade and Apache Wicket integration</description>

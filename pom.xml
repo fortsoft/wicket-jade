@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ro.fortsoft.wicket.jade</groupId>
     <artifactId>wicket-jade-parent</artifactId>
-   	<version>0.1-SNAPSHOT</version>
+   	<version>0.1</version>
     <packaging>pom</packaging>    
 	<name>Wicket Jade Parent</name>
 	<description>Jade and Apache Wicket integration</description>
@@ -27,7 +27,7 @@
         <connection>scm:git:https://github.com/decebals/wicket-jade.git</connection>
         <developerConnection>scm:git:https://github.com/decebals/wicket-jade.git</developerConnection>
         <url>git@github.com/decebals/wicket-jade.git</url>
-        <tag>HEAD</tag>
+        <tag>release-0.1</tag>
     </scm>
         
     <properties>
