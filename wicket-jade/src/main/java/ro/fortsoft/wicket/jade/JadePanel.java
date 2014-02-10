@@ -49,7 +49,7 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 
 	private static final MarkupType jadeMarkupType = new MarkupType("jade", "text/x-jade");
 	
-	private boolean throwFreemarkerExceptions;
+	private boolean throwJadeExceptions;
 	private transient String evaluatedTemplate;
 	private transient String stackTraceAsString;
 	
@@ -126,8 +126,8 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
      * 
      * @return Whether any Jade exceptions should be thrown or trapped. The default is false.
      */
-    public JadePanel setThrowFreemarkerExceptions(boolean value) {
-    	this.throwFreemarkerExceptions = value;
+    public JadePanel setThrowJadeExceptions(boolean value) {
+    	this.throwJadeExceptions = value;
     	
     	return this;
     }
@@ -159,7 +159,7 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
     }
 	
 	protected void onException(Exception e) {
-		if (!throwFreemarkerExceptions) {
+		if (!throwJadeExceptions) {
 			// print the exception on the panel
 			stackTraceAsString = Strings.toString(e);
 		} else {
