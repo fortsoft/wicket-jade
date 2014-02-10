@@ -39,8 +39,8 @@ public class ContentPanel extends Panel {
 		booksPanel.add(AttributeModifier.append("style", "border: 1px solid red;"));
 		add(booksPanel);
 		
-		Label messageLabel = new Label("message", "Pure wicket label in Jade panel!!!");
-		messageLabel.add(AttributeModifier.append("style", "border: 1px solid blue;"));
+		Label messageLabel = new Label("message", "Pure wicket label in Jade panel !!!");
+		messageLabel.add(AttributeModifier.append("style", "background-color: lightgray;"));
 		booksPanel.add(messageLabel);
 		
 		Author author = new Author("Douglas", "Adams", "England");
