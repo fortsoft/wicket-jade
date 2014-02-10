@@ -15,7 +15,6 @@ package ro.fortsoft.wicket.jade.demo;
 import java.util.Map;
 
 import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.markup.MarkupType;
 import org.apache.wicket.markup.html.panel.Panel;
 
 import ro.fortsoft.wicket.jade.JadePanel;
@@ -35,16 +34,7 @@ public class BooksPanel extends JadePanel {
 	protected void onInitialize() {
 		super.onInitialize();
 
-		Panel embeddedPanel = new EmbeddedPanel("embedded") {
-			
-			private static final long serialVersionUID = 1L;
-
-			@Override
-		    public MarkupType getMarkupType() {
-		        return MarkupType.HTML_MARKUP_TYPE;
-		    }
-			
-		};		
+		Panel embeddedPanel = new EmbeddedPanel("embedded");		
 		embeddedPanel.add(AttributeModifier.append("style", "background-color: lightgray;"));
 		add(embeddedPanel);
 	}

@@ -24,7 +24,6 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.IMarkupCacheKeyProvider;
 import org.apache.wicket.markup.IMarkupResourceStreamProvider;
 import org.apache.wicket.markup.MarkupStream;
-import org.apache.wicket.markup.MarkupType;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -47,10 +46,8 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 
 	private static final long serialVersionUID = 1L;
 
-	private static final MarkupType jadeMarkupType = new MarkupType("jade", "text/x-jade");
-	
 	private boolean throwJadeExceptions;
-	private transient String evaluatedTemplate;
+	private transient String htmlMarkup;
 	private transient String stackTraceAsString;
 	
 	public JadePanel(String id, Map<String, Object> values) {
@@ -60,11 +57,6 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 	public JadePanel(String id, IModel<Map<String, Object>> model) {
 		super(id, model);
     }
-
-	@Override
-	public MarkupType getMarkupType() {
-		return jadeMarkupType;
-	}
 
 	@Override
 	public IResourceStream getMarkupResourceStream(MarkupContainer container, Class<?> containerClass) {
@@ -78,14 +70,14 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 		}
 
 		// evaluate the jade template
-		if (evaluatedTemplate == null) {
-			evaluatedTemplate = Jade4J.render(template, getModelObject());
+		if (htmlMarkup == null) {
+			htmlMarkup = Jade4J.render(template, getModelObject());
 		}
 
 		//  create the markup (string)
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("<wicket:panel>");
-		buffer.append(evaluatedTemplate);
+		buffer.append(htmlMarkup);
 		buffer.append("</wicket:panel>");
 		
 		return new StringResourceStream(buffer.toString());
@@ -104,11 +96,11 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 			replaceComponentTagBody(markupStream, openTag,
 					Strings.toMultilineMarkup(stackTraceAsString));
         } else {
-			if (evaluatedTemplate == null) {
-				// initialize evaluatedTemplate
+			if (htmlMarkup == null) {
+				// initialize htmlMarkup
 				getMarkupResourceStream(null, null);
 			}
-			replaceComponentTagBody(markupStream, openTag, evaluatedTemplate);
+			replaceComponentTagBody(markupStream, openTag, htmlMarkup);
         }
 	}
 
@@ -154,7 +146,7 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
     protected void onDetach() {
 		super.onDetach();
             
-        evaluatedTemplate = null;
+        htmlMarkup = null;
         stackTraceAsString = null;
     }
 	
