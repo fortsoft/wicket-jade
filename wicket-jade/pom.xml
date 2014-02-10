@@ -14,20 +14,18 @@
 	<name>Wicket Jade</name>
 	<description>Jade and Apache Wicket integration</description>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jade4j.version>0.4.0</jade4j.version>
+    </properties>   
+
 	<dependencies>
 		<!-- Jade4J -->
 		<dependency>
-		  <groupId>de.neuland</groupId>
-		  <artifactId>jade4j</artifactId>
-		  <version>0.3.12</version>
+			<groupId>de.neuland-bfi</groupId>
+		  	<artifactId>jade4j</artifactId>
+		  	<version>${jade4j.version}</version>
 		</dependency>
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>jade4j-releases</id>
-			<url>https://raw.github.com/neuland/jade4j/master/releases</url>
-		</repository>
-	</repositories>
 	
 </project>
