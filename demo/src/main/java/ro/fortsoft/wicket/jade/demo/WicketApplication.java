@@ -13,6 +13,7 @@
 package ro.fortsoft.wicket.jade.demo;
 
 import org.apache.wicket.Page;
+import org.apache.wicket.core.request.mapper.MountedMapper;
 import org.apache.wicket.protocol.http.WebApplication;
 
 /**
@@ -34,7 +35,9 @@ public class WicketApplication extends WebApplication {
 //		getMarkupSettings().setMarkupFactory(new JadeMarkupFactory());
 
 		// exception settings
-		getResourceSettings().setThrowExceptionOnMissingResource(false);		
+		getResourceSettings().setThrowExceptionOnMissingResource(false);	
+		
+		mount(new MountedMapper("/demoJadePage", DemoJadePage.class));
 	}
 
 	@Override

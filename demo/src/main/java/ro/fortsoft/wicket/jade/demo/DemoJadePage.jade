@@ -1,0 +1,9 @@
+html
+head
+  title Book list on Jade web page
+body
+  ol#books
+    for book in books
+      if book.available
+        li #{book.name} for #{book.price} €
+
