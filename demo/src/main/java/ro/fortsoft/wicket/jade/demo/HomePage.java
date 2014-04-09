@@ -13,6 +13,7 @@
 package ro.fortsoft.wicket.jade.demo;
 
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 
 /**
  * @author Decebal Suiu
@@ -30,6 +31,8 @@ public class HomePage extends WebPage {
 		super.onInitialize();
 		
 		add(new ContentPanel("content"));
+		
+		add(new BookmarkablePageLink<DemoJadePage>("demoJadePage", DemoJadePage.class));
 	}
 		
 }
