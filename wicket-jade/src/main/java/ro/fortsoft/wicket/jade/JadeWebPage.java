@@ -31,12 +31,11 @@ import de.neuland.jade4j.template.TemplateLoader;
  * @author Nigel Sheridan-Smith (github.com/wtfiwtz)
  */
 public class JadeWebPage extends GenericWebPage<Map<String, Object>> 
-						implements IMarkupResourceStreamProvider, IMarkupCacheKeyProvider {
+						implements IMarkupResourceStreamProvider { //, IMarkupCacheKeyProvider {
 
 	private static final long serialVersionUID = 1L;
 
 	private boolean throwJadeExceptions;
-	private transient String htmlMarkup;
 	private transient String stackTraceAsString;
 	
 	public JadeWebPage() {
@@ -70,11 +69,11 @@ public class JadeWebPage extends GenericWebPage<Map<String, Object>>
 	}
 
 	
-	@Override
-	public String getCacheKey(MarkupContainer container, Class<?> containerClass) {
-		// don't cache the evaluated template
-		return null;
-	}
+//	@Override
+//	public String getCacheKey(MarkupContainer container, Class<?> containerClass) {
+//		// don't cache the evaluated template
+//		return null;
+//	}
 
 	@Override
 	public IResourceStream getMarkupResourceStream(MarkupContainer container, Class<?> containerClass) {
@@ -87,9 +86,10 @@ public class JadeWebPage extends GenericWebPage<Map<String, Object>>
 		}
 
 		// evaluate the jade template
-		if (htmlMarkup == null) {
+		String htmlMarkup;
+		//if (htmlMarkup == null) {
 			htmlMarkup = Jade4J.render(template, getModelObject());
-		}
+		//}
 
 		return new StringResourceStream(htmlMarkup);
 	}
