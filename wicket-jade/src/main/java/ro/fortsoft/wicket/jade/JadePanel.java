@@ -1,11 +1,11 @@
 /*
- * Copyright 2013 Decebal Suiu
- * 
+ * Copyright 2013 FortSoft
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with
  * the License. You may obtain a copy of the License in the LICENSE file, or at:
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
@@ -41,7 +41,7 @@ import de.neuland.jade4j.template.TemplateLoader;
 /**
  * @author Decebal Suiu
  */
-public abstract class JadePanel extends GenericPanel<Map<String, Object>> 
+public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 		implements IMarkupResourceStreamProvider, IMarkupCacheKeyProvider {
 
 	private static final long serialVersionUID = 1L;
@@ -49,11 +49,11 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 	private boolean throwJadeExceptions;
 	private transient String htmlMarkup;
 	private transient String stackTraceAsString;
-	
+
 	public JadePanel(String id, Map<String, Object> values) {
 		this(id, Model.ofMap(values));
 	}
-	
+
 	public JadePanel(String id, IModel<Map<String, Object>> model) {
 		super(id, model);
     }
@@ -79,7 +79,7 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 		buffer.append("<wicket:panel>");
 		buffer.append(htmlMarkup);
 		buffer.append("</wicket:panel>");
-		
+
 		return new StringResourceStream(buffer.toString());
 	}
 
@@ -115,22 +115,22 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
      * want them to be able to have them correct them while the rest of the application keeps on
      * working.
      * </p>
-     * 
+     *
      * @return Whether any Jade exceptions should be thrown or trapped. The default is false.
      */
     public JadePanel setThrowJadeExceptions(boolean value) {
     	this.throwJadeExceptions = value;
-    	
+
     	return this;
     }
-    
+
 	protected JadeTemplate getTemplate(Class<?> containerClass) throws IOException {
 		String templateName = containerClass.getName();
 		String resourceName = containerClass.getSimpleName() + ".jade";
-		
+
 		InputStream inputStream = containerClass.getResourceAsStream(resourceName);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-		
+
 		JadeTemplate template = new JadeTemplate();
 		TemplateLoader templateLoader = new ReaderTemplateLoader(reader, templateName);
 		Parser parser = new Parser(templateName, templateLoader);
@@ -138,18 +138,18 @@ public abstract class JadePanel extends GenericPanel<Map<String, Object>>
 		template.setTemplateLoader(templateLoader);
 		template.setRootNode(root);
 		template.setPrettyPrint(true);
-		
+
 		return template;
 	}
 
 	@Override
     protected void onDetach() {
 		super.onDetach();
-            
+
         htmlMarkup = null;
         stackTraceAsString = null;
     }
-	
+
 	protected void onException(Exception e) {
 		if (!throwJadeExceptions) {
 			// print the exception on the panel
